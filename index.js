@@ -10,7 +10,7 @@ const { EvmChain } = require("@moralisweb3/common-evm-utils");
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4002;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -96,7 +96,8 @@ app.get("/authenticate", async (req, res) => {
   try {
     const data = jwt.verify(token, process.env.AUTH_SECRET);
     res.json(data);
-  } catch {
+  } catch (error) {
+    console.log("error occured" + error);
     return res.sendStatus(403);
   }
 });
@@ -111,8 +112,8 @@ app.post("/get-nft/:address", async (req, res) => {
     });
     res.status(200).json({ message: response });
   } catch (error) {
-    res.status(409).json({ message: "error occured" + error });
     console.log(error);
+    res.status(409).json({ message: "error occured" + error });
   }
 });
 
@@ -120,7 +121,8 @@ app.get("/logout", async (req, res) => {
   try {
     res.clearCookie("jwt");
     return res.sendStatus(200);
-  } catch {
+  } catch (error) {
+    console.log("error occured" + error);
     return res.sendStatus(403);
   }
 });
