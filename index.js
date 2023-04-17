@@ -119,6 +119,10 @@ app.get("/logout", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Hello, you're hitting faithluna" });
+});
+
 const startServer = async () => {
   await Moralis.start({
     apiKey: process.env.MORALIS_API_KEY
