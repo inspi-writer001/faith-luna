@@ -16,10 +16,16 @@ app.use(express.json());
 app.use(cookieParser());
 // origin: "http://localhost:3000",
 // allow access to React app domain..
+// app.use(
+//   cors({
+//     origin: "https://faithluna-nft.web.app",
+//     credentials: true
+//   })
+// );
+
 app.use(
   cors({
-    origin: "https://faithluna-nft.web.app/",
-    credentials: true
+    origin: "*"
   })
 );
 
