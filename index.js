@@ -18,7 +18,7 @@ app.use(cookieParser());
 // allow access to React app domain..
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://faithluna-nft.web.app/",
     credentials: true
   })
 );
